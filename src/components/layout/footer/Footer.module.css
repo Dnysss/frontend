@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@200;300;400;500;600;700&display=swap');
+
+.footer {
+    background-color: #8a2be2;
+    color: #fff;
+    padding: 3em;
+    text-align: center;
+}
+
+.footer span {
+    font-family: 'Kodchasan', sans-serif;
+}
+
+.social_list {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+}
+
+.social_list li {
+    margin: 0 1em;
+}
+
+.social_list li:hover {
+    color: #ffbb33;
+}
+
+.social_list svg {
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.copy_right {
+    margin-top: 2em;
+}
+
+.copy_right span {
+    font-weight: bold;
+    color: #ffbb33;
+}

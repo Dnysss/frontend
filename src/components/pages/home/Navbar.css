@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Kodchasan:wght@200;300;400;500;600;700&display=swap');
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #8a2be2;
+    padding: 1em;
+}
+
+.list {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+.item {
+    margin-right: 1em;
+}
+
+.item a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.item a:hover {
+    color: #ffbb33;
+}
+
+.dex {
+    font-size: 2rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.dex h1 {
+    font-family: 'Kodchasan', sans-serif;
+}
