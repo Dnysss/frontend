@@ -1,9 +1,9 @@
 .project_card {
     padding: 1em;
     border-radius: 5px;
-    width: 24%;
+    width: 250px;
     margin: 0.5%;
-    background-color: #fff;
+    background-color:aliceblue;
     box-shadow: 10px 10px 10px rgba(0, 0, 0, .323);
     margin: 0 0 35px 0;
     margin-left: 50px;

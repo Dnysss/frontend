@@ -10,26 +10,33 @@ import Navbar from "./components/layout/navbar/Navbar";
 import Footer from "./components/layout/footer/Footer";
 import Projects from "./components/pages/projects/Projects";
 import Project from "./components/pages/project/Project";
+import Profile from "./components/pages/user/Profile";
+import Message from "./components/layout/message/Message";
+
+import { UserProvider } from "./context/UserContext";
 
 function App() {
     return (
         
         <Router>
-            <Routes>
-                <Route exact path="/" element={<SignIn />} />
-                <Route path="/singUp" element={<SignUp />} />
-            </Routes>
-            <Navbar />
-            <Container customClass="min_height">
-                <Routes>
-                    <Route path="/home" element={<Home />}></Route>
-                    <Route path="/projects" element={<Projects />}></Route>
-                    <Route path="/newproject" element={<NewProject />}></Route>
-                    <Route path="/project/:id" element={<Project />}></Route>
-                </Routes>
-            </Container>
-            <Footer />
+            <UserProvider>
+                <Navbar />
+                {/* <Message /> */}
+                <Container customClass="min_height">
+                    <Routes>
+                        <Route exact path="/" element={<SignUp />} />
+                        <Route path="/signin" element={<SignIn />} />
+                        <Route path="/user/profile" element={<Profile />} />
+                        <Route path="/home" element={<Home />}></Route>
+                        <Route path="/projects" element={<Projects />}></Route>
+                        <Route path="/newproject" element={<NewProject />}></Route>
+                        <Route path="/project/:id" element={<Project />}></Route>
+                    </Routes>
+                </Container>
+                <Footer />
+            </UserProvider>
         </Router>
+        
     );
 }
 

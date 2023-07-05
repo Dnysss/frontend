@@ -5,47 +5,22 @@ import Select from "../../form/select/Select";
 import SubmitButton from "../../form/submitButton/SubmitButton";
 import styles from "./ProjectForm.module.css";
 
-function ProjectForm({ handleSubmit, btnText, projectData }) {
-    const [project, setProject] = useState(projectData || {});
+function ProjectForm({ handleSubmit, btnText, cardData }) {
+    const [card, setCard] = useState(cardData || {});
+    const category = ["Saúde", "Desenvolvimento", "Design", "Planejamento"];
 
-    const [categories, setCategories] = useState([]);
-
-    //API
-    useEffect(() => {
-        fetch("http://localhost:5000/categories", {
-            method: "GET",
-            headers: {
-                "Content-type": "application/json",
-            },
-        })
-            .then((resp) => resp.json())
-            .then((data) => {
-                setCategories(data);
-            })
-            .catch((err) => console.log(err));
-    }, []);
-
-    //não recarregar a pagina e dar um submit
-    const submit = (e) => {
-        e.preventDefault();
-        //console.log(project);
-        handleSubmit(project);
-    };
-    //valores do nome do projeto
-    function handleChange(e) {
-        setProject({ ...project, [e.target.name]: e.target.value });
-        console.log(project);
+    function handleOnChange(e) {
+        setCard({...card, [e.target.name]: e.target.value})
     }
 
-    //category
     function handleCategory(e) {
-        setProject({
-            ...project,
-            category: {
-                id: e.target.value,
-                name: e.target.options[e.target.selectedIndex].text,
-            },
-        });
+        setCard({...card, category: e.target.options[e.target.selectedIndex].text})
+    }
+
+    function submit(e) {
+        console.log(card)
+        e.preventDefault();
+        handleSubmit(card);
     }
 
     return (
@@ -55,15 +30,15 @@ function ProjectForm({ handleSubmit, btnText, projectData }) {
                 text="Nome da tarefa"
                 name="name"
                 placeholder="Insira o nome da tarefa"
-                handleOnChange={handleChange}
-                value={project.name ? project.name : ""}
+                handleOnChange={handleOnChange}
+                value={card.name || ''}
             />
             <Select
-                name="category_id"
+                name="category"
                 text="Selecione a categoria"
-                options={categories}
+                options={category}
                 handleOnChange={handleCategory}
-                value={project.category ? project.category.id : ""}
+                value={card.category || ''}
             />
             <SubmitButton text={btnText} />
         </form>

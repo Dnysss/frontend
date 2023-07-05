@@ -8,7 +8,7 @@ function Home() {
             <h1>
                 Bem Vindo ao <span>DEX</span>
             </h1>
-            <p>Comece a gerenciar as suas tarefas agora mesmo!</p>
+            <p>Comece a gerenciar suas tarefas agora mesmo!</p>
             <LinkButton to="/newproject" text="Criar Card" />
             <img src={savings} alt="todolist"></img>
         </section>

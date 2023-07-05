@@ -20,18 +20,16 @@
     padding: 0;
 }
 
-.container {
+.container_section {
     height: 100vh;
     width: 100%;
-    background: var(--color-gradient);
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    
 }
 
-#login_form {
+
+.login_form {
     background-color: var(--color-light-50);
     display: flex;
     flex-direction: column;
@@ -43,58 +41,28 @@
     animation: dark-to-light 0.3s ease-in-out;
 }
 
-#form_header {
+.form_header {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-#form_header h1 {
+.form_header h1 {
     font-size: 40px;
     position: relative;
 }
 
-#form_header h1::before {
+.form_header h1::before {
     position: absolute;
     content: '';
-    width: 40%;
+    width: 20%;
     background-color: var(--color-purple-50);
     height: 3px;
     bottom: 10px;
     border-radius: 5px;
 }
 
-#mode_icon {
-    cursor: pointer;
-    font-size: 20px;
-}
-
-#social_midia {
-    display: flex;
-    justify-content: space-around;
-}
-
-#social_midia a {
-    font-size: 25px;
-}
-
-#social_midia .linkedin {
-    color: #0066C8;
-}
-
-#social_midia .gmail {
-    color: #F54236;
-}
-
-#social_midia .instagram {
-    color: #D92B7F;
-}
-
-#social_midia a:hover {
-    transform: scale(1.2);
-}
-
-#inputs {
+.inputs {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -102,12 +70,12 @@
     gap: 20px;
 }
 
-.input-box label {
+.input_box label {
     font-size: 14px;
     color: var(--color-dark-50);
 }
 
-.input-field {
+.input_field {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -116,12 +84,12 @@
     border-bottom: 1px solid var(--color-purple-50);
 }
 
-.input-field i {
+.input_field i {
     font-size: 18px;
     color: var(--color-dark-900);
 }
 
-.input-field input {
+.input_field input {
     border: none;
     background-color: transparent;
     width: 260px;
@@ -130,31 +98,20 @@
 }
 
 /*pra tirar a segunda borda dos inputs*/
-.input-field input:focus {
+.input_field input:focus {
     outline: none;
 }
 
-#singup a {
+
+.signup p {
     text-decoration: none;
-    font-size: 15px;
     color: var(--color-dark-50);
 }
 
 /*pra quando passar o mouse por cima mudar de cor*/
 
-#singup a:hover {
-    color: var(--color-purple-50);
-}
 
-.text-success {
-    color:#0066C8;
-}
-
-.text-danger {
-    color: #F54236;
-}
-
-#login_button {
+.login_button {
     border: none;
     background: var(--color-gradient);
     color: var(--color-light-50);
@@ -166,6 +123,6 @@
 }
 
 /*pra aumentar o tamnho do botão quando o mouser passar por cima*/
-#login_button:hover {
+.login_button:hover {
     transform: scale(1.05);
 }

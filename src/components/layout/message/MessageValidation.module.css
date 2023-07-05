@@ -1,0 +1,11 @@
+.message {
+    font-size: 15px;
+}
+
+.success {
+    color: #155724;
+}
+
+.error {
+    color: brown;
+}

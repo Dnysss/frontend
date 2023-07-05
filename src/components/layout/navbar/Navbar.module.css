@@ -7,6 +7,15 @@
     padding: 1em;
 }
 
+.navbar li {
+    color: #fff;
+    cursor: pointer;
+}
+
+.navbar li:hover {
+    color: #ffbb33;
+}
+
 .list {
     display: flex;
     list-style: none;
@@ -34,4 +43,8 @@
 
 .dex h1 {
     font-family: 'Kodchasan', sans-serif;
+}
+
+.logout {
+    cursor: pointer;
 }

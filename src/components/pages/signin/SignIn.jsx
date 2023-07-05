@@ -1,109 +1,66 @@
 import { Link } from "react-router-dom";
 
-
-import { RiInstagramFill } from "react-icons/ri";
-import { BsLinkedin } from "react-icons/bs";
-import { SiGmail } from "react-icons/si";
 import { FaEnvelope, FaKey } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
-import axios from "axios";
+import { Context } from "../../../context/UserContext";
+import MessageValidation from '../../layout/message/MessageValidation';
 
-import "./SignIn.css";
 
-const SingIn = () => {
-   const [email, setEmail] = useState("");
-   const [password, setPassword] = useState("");
-   //Config mesages
-   //const [msg, setMsg] = useState("");
-   const [error, setError] = useState("");
+import styles from "./SignIn.module.css";
 
-   function handleSubmit(e) {
-      e.preventDefault();
+const SignIn = () => {
+   const [user, setUser] = useState({});
+   const {login} = useContext(Context);
 
-      console.log(email, password);
-      axios
-         .post("http://localhost:3000/auth/login", {
-            email,
-            password,
-         })
-         .then((response) => {
-            console.log(response);
-            window.location.href = '/home'
-            //alert('login successful!')
-
-            //setMsg(response.data.msg);
-         })
-         .catch((error) => {
-            console.log(error);
-            setError(error.response.data.msg);
-         });
-
-      //imprimir a messagem de autenticação ou de erro no form
+   function handleOnChange (e) {
+      setUser({...user, [e.target.name]: e.target.value})
+      
    }
+   function handleSubmit (e) {
+      e.preventDefault();
+      login(user);
+   }
+
    return (
-      <main className="container">
-         <form id="login_form" className="dark" onSubmit={handleSubmit}>
-            <div id="form_header">
+      <main className={styles.container_main}>
+         <form id="login_form" className={styles.login_form } onSubmit={handleSubmit} >
+            <div id="form_header" className={styles.form_header}>
                <h1>Sign in</h1>
-               <i id="mode_icon" className="fa-solid fa-moon"></i>
             </div>
-
-            <div id="social_midia">
-               <a href="#" className="linkedin">
-                  <BsLinkedin />
-               </a>
-               <a href="#" className="gmail">
-                  <SiGmail />
-               </a>
-               <a href="#" className="instagram">
-                  <RiInstagramFill />
-               </a>
-            </div>
-
-            <div id="inputs">
-               <div className="input-box">
+            
+            <div id="inputs" className={styles.inputs}>
+               <div className={styles.input_box}>
                   <label htmlFor="email">
                      E-mail
-                     <div className="input-field">
+                     <div className={styles.input_field}>
                         <i className="envelope">
                            <FaEnvelope />
                         </i>
-                        <input
-                           type="email"
-                           id="email"
-                           name="email"
-                           onChange={(e) => setEmail(e.target.value)}
-                        />
+                        <input type="email" id="email" name="email" onChange={handleOnChange} />
                      </div>
                   </label>
                </div>
 
-               <div className="input-box">
+               <div className={styles.input_box}>
                   <label htmlFor="password">
                      Password
-                     <div className="input-field">
+                     <div className={styles.input_field}>
                         <i className="key">
                            <FaKey />
                         </i>
-                        <input
-                           type="password"
-                           id="password"
-                           name="password"
-                           onChange={(e) => setPassword(e.target.value)}
-                        />
+                        <input type="password" id="password" name="password" onChange={handleOnChange} />
                      </div>
                   </label>
-                  <div id="singup">
+                  <div id="signup">
                      New to here?
-                     <Link to="/singUp"> Sign Up</Link>.
+                     <Link to="/"> Sign Up</Link>.
                   </div>
-
-                  <p className="text-danger">{error}</p>
+                  <div><MessageValidation /></div>
                </div>
             </div>
 
-            <button type="submit" id="login_button">
+            <button type="submit" id="login_button" className={styles.login_button}>
                Login
             </button>
          </form>
@@ -111,4 +68,4 @@ const SingIn = () => {
    );
 };
 
-export default SingIn;
+export default SignIn;

@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import styles from "./Message.module.css";
 
-function Message({ type, msg }) {
+function Message() {
     //altera a visibilidade da menssagem
+    const [type, setType] = useState("");
     const [visible, setVisible] = useState(false);
 
-    useEffect(() => {
+    /* useEffect(() => {
         if (!msg) {
             setVisible(false);
             return;
@@ -16,13 +17,13 @@ function Message({ type, msg }) {
         }, 3000);
 
         return () => clearTimeout(timer);
-    }, [msg]);
+    }, [msg]); */
 
     return (
         <>
-            {visible && (
-                <div className={`${styles.message} ${styles[type]}`}>{msg}</div>
-            )}
+            
+            <div className={`${styles.message} ${styles[type]}`}>msg</div>
+            
         </>
     );
 }
