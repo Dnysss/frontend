@@ -44,7 +44,7 @@ const SignUp = () => {
                             Name
                             <div className={styles.input_field}>
                                 <i className="user"><FaUser /></i>
-                                <input type="text" id="name" name="name" onChange={handleOnChange} />
+                                <input type="text" id="name" name="name" onChange={handleOnChange} pattern="[A-Za-z]" />
                             </div>
                         </label>
                     </div>

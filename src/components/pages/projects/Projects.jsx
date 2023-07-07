@@ -20,6 +20,8 @@ function Projects() {
     const [cards, setCards] = useState([]);
     const [token] = useState(localStorage.getItem('token') || '');
     const {setFlashMessage} = useFlashMessage();
+    const [removeLoading, setRemoveLoading] = useState(false);
+
 
     /* const [projectMessage, setProjectMessage] = useState(""); */
 
@@ -29,7 +31,8 @@ function Projects() {
                 Authorization: `Bearer ${JSON.parse(token)}`
             }
         }).then((response) => {
-            setCards(response.data.cards)
+            setCards(response.data.cards);
+            setRemoveLoading(true);
         })
     }, [token])
 
@@ -50,7 +53,7 @@ function Projects() {
         }).catch((err) => {
             msgType = 'error'
             return err.response.data
-        })
+        }, 300)
 
         setFlashMessage(data.message, msgType)
     }
@@ -76,8 +79,10 @@ function Projects() {
                         </div>
                     ))
                 }
-                {cards.length === 0 && <p>Não há cards.</p>}
-           
+                {!removeLoading && <Loading />}
+                {removeLoading && cards.length === 0 && (
+                    <p>Não há cards.</p>
+                )}
             </Container>            
         </div>
     );
