@@ -84,7 +84,7 @@ const Profile = () => {
                             Name
                             <div className={styles.input_field}>
                                 <i className="user"><FaUser /></i>
-                                <input type="text" id="name" name="name" onChange={handleOnChange} value={user.name || '' } pattern="[A-Za-z]" />
+                                <input type="text" id="name" name="name" onChange={handleOnChange} value={user.name || '' } pattern="[A-Za-z]+" />
                             </div>
                         </label>
                     </div>
