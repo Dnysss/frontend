@@ -17,9 +17,16 @@ import { useState, useEffect } from "react";
 
 function Projects() {
     const [cards, setCards] = useState([]);
+<<<<<<< HEAD
     const [token] = useState(localStorage.getItem("token") || "");
     const { setFlashMessage } = useFlashMessage();
     const [removeLoading, setRemoveLoading] = useState(false);
+=======
+    const [token] = useState(localStorage.getItem('token') || '');
+    const {setFlashMessage} = useFlashMessage();
+    const [removeLoading, setRemoveLoading] = useState(false);
+
+>>>>>>> refs/remotes/origin/main
 
     /* const [projectMessage, setProjectMessage] = useState(""); */
 
@@ -31,8 +38,13 @@ function Projects() {
         }).then((response) => {
             setCards(response.data.cards);
             setRemoveLoading(true);
+<<<<<<< HEAD
         });
     }, [token]);
+=======
+        })
+    }, [token])
+>>>>>>> refs/remotes/origin/main
 
     async function removeCard(id) {
         let msgType = "success";
@@ -55,7 +67,16 @@ function Projects() {
                 return err.response.data;
             });
 
+<<<<<<< HEAD
         setFlashMessage(data.message, msgType);
+=======
+        }).catch((err) => {
+            msgType = 'error'
+            return err.response.data
+        }, 300)
+
+        setFlashMessage(data.message, msgType)
+>>>>>>> refs/remotes/origin/main
     }
 
     return (
@@ -79,10 +100,20 @@ function Projects() {
                             />
                             {/* <button onClick={() => {removeCard(id._id)}}></button> */}
                         </div>
+<<<<<<< HEAD
                     ))}
                 {!removeLoading && <Loading />}
                 {removeLoading && cards.length === 0 && <p>Não há cards.</p>}
             </Container>
+=======
+                    ))
+                }
+                {!removeLoading && <Loading />}
+                {removeLoading && cards.length === 0 && (
+                    <p>Não há cards.</p>
+                )}
+            </Container>            
+>>>>>>> refs/remotes/origin/main
         </div>
     );
 }
