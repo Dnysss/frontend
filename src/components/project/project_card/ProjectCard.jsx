@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
 import styles from "./ProjectCard.module.css";
-import { BsPlusCircle, BsFillTrashFill } from "react-icons/bs";
+import { BsFillInfoCircleFill, BsFillTrashFill } from "react-icons/bs";
 
-function ProjectCard({ id, name, category, handleRemove }) {
+function ProjectCard({ id, name, category, description, handleRemove }) {
     //esse remove está no onclick do botão
     const remove = (e) => {
         e.preventDefault();
@@ -12,6 +12,8 @@ function ProjectCard({ id, name, category, handleRemove }) {
     return (
         <div className={styles.project_card}>
             <h4>{name}</h4>
+      
+
             <p className={styles.category_text}>
                 <span className={`${styles[category?.toLowerCase()]}`}></span>{" "}
                 {category}
@@ -19,7 +21,7 @@ function ProjectCard({ id, name, category, handleRemove }) {
 
             <div className={styles.project_card_actions}>
                 <Link to={`/project/${id}`}>
-                    <BsPlusCircle /> Add
+                    <BsFillInfoCircleFill /> Info
                 </Link>
                 <button onClick={remove}>
                     <BsFillTrashFill /> Excluir

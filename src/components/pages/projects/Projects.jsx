@@ -16,43 +16,46 @@ import ProjectCard from "../../project/project_card/ProjectCard";
 import { useState, useEffect } from "react";
 
 function Projects() {
-
     const [cards, setCards] = useState([]);
-    const [token] = useState(localStorage.getItem('token') || '');
-    const {setFlashMessage} = useFlashMessage();
+    const [token] = useState(localStorage.getItem("token") || "");
+    const { setFlashMessage } = useFlashMessage();
+    const [removeLoading, setRemoveLoading] = useState(false);
 
     /* const [projectMessage, setProjectMessage] = useState(""); */
 
     useEffect(() => {
-        api.get('/cards/mycards', {
+        api.get("/cards/mycards", {
             headers: {
-                Authorization: `Bearer ${JSON.parse(token)}`
-            }
+                Authorization: `Bearer ${JSON.parse(token)}`,
+            },
         }).then((response) => {
-            setCards(response.data.cards)
-        })
-    }, [token])
+            setCards(response.data.cards);
+            setRemoveLoading(true);
+        });
+    }, [token]);
 
     async function removeCard(id) {
-        let msgType = 'success';
+        let msgType = "success";
 
-        const data = await api.delete(`/cards/${id}`, {
-            headers: {
-                Authorization: `Bearer ${JSON.parse(token)}`
-            }
-        }).then((response) => {
-            //atulização do card removido no front
-            const updateCards = cards.filter((card) => card._id != id);
-            setCards(updateCards)
+        const data = await api
+            .delete(`/cards/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${JSON.parse(token)}`,
+                },
+            })
+            .then((response) => {
+                //atulização do card removido no front
+                const updateCards = cards.filter((card) => card._id != id);
+                setCards(updateCards);
 
-            return response.data;
+                return response.data;
+            })
+            .catch((err) => {
+                msgType = "error";
+                return err.response.data;
+            });
 
-        }).catch((err) => {
-            msgType = 'error'
-            return err.response.data
-        })
-
-        setFlashMessage(data.message, msgType)
+        setFlashMessage(data.message, msgType);
     }
 
     return (
@@ -70,15 +73,16 @@ function Projects() {
                                 id={card._id}
                                 name={card.name}
                                 category={card.category}
-                                handleRemove={() => {removeCard(card._id)}}
+                                handleRemove={() => {
+                                    removeCard(card._id);
+                                }}
                             />
                             {/* <button onClick={() => {removeCard(id._id)}}></button> */}
                         </div>
-                    ))
-                }
-                {cards.length === 0 && <p>Não há cards.</p>}
-           
-            </Container>            
+                    ))}
+                {!removeLoading && <Loading />}
+                {removeLoading && cards.length === 0 && <p>Não há cards.</p>}
+            </Container>
         </div>
     );
 }

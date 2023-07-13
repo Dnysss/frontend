@@ -6,32 +6,33 @@ import SubmitButton from "../form/submitButton/SubmitButton";
 import style from "../project/project_form/ProjectForm";
 
 function ServiceForm({ handleSubmit, btnText, projectData }) {
-    const [service, setService] = useState({});
+    const [list, setList] = useState(projectData || {});
 
     function submit(e) {
         e.preventDefault();
-        projectData.services.push(service);
-        handleSubmit(projectData);
+        /* projectData.list.push(list); */
+        handleSubmit(list);
     }
 
-    function handleChange(e) {
-        setService({ ...service, [e.target.name]: e.target.value });
+    function handleOnChange(e) {
+        setList({ ...list, [e.target.name]: e.target.value });
     }
     return (
         <form onSubmit={submit} className={style.form}>
             <Input
                 type="text"
-                text="Nome da tarefa"
+                text="Nome da task"
                 name="name"
                 placeholder="Digite o nome da tarefa"
-                handleOnChange={handleChange}
+                handleOnChange={handleOnChange}
+                value={list.name || ''}
             />
             <Input
                 type="text"
                 text="Descrição"
                 name="description"
                 placeholder="Digite uma descrição(opcional)"
-                handleOnChange={handleChange}
+                handleOnChange={handleOnChange}
             />
             <SubmitButton text={btnText} />
         </form>

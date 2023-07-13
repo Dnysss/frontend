@@ -1,4 +1,4 @@
-import styles from "../project/project_card/ProjectCard";
+import styles from "../project/project_card/ProjectCard.module.css";
 
 import { BsFillTrashFill } from "react-icons/bs";
 
