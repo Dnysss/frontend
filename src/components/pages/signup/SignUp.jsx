@@ -43,7 +43,6 @@ const SignUp = () => {
                         <label htmlFor="name">
                             Name
                             <div className={styles.input_field}>
-<<<<<<< HEAD
                                 <i className="user">
                                     <FaUser />
                                 </i>
@@ -52,12 +51,8 @@ const SignUp = () => {
                                     id="name"
                                     name="name"
                                     onChange={handleOnChange}
-                                    pattern="[A-Za-z]+"
+                                    pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$"
                                 />
-=======
-                                <i className="user"><FaUser /></i>
-                                <input type="text" id="name" name="name" onChange={handleOnChange} pattern="[A-Za-z]+" />
->>>>>>> refs/remotes/origin/main
                             </div>
                         </label>
                     </div>

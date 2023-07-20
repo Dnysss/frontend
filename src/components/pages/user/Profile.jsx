@@ -97,7 +97,6 @@ const Profile = () => {
                         <label htmlFor="name">
                             Name
                             <div className={styles.input_field}>
-<<<<<<< HEAD
                                 <i className="user">
                                     <FaUser />
                                 </i>
@@ -107,12 +106,8 @@ const Profile = () => {
                                     name="name"
                                     onChange={handleOnChange}
                                     value={user.name || ""}
-                                    pattern="[A-Za-z]+"
+                                    pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$"
                                 />
-=======
-                                <i className="user"><FaUser /></i>
-                                <input type="text" id="name" name="name" onChange={handleOnChange} value={user.name || '' } pattern="[A-Za-z]+" />
->>>>>>> refs/remotes/origin/main
                             </div>
                         </label>
                     </div>
